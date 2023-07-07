@@ -1,0 +1,25 @@
+version: '3'
+services:
+  node-app:
+    container_name: "backend"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+      - MONGODB_URL=mongodb://mongodb/sylvr
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    networks:
+      - mynetwork
+
+  mongodb:
+    image: mongo
+    container_name: "database"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
