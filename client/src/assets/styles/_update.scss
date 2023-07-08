@@ -1,0 +1,11 @@
+.update-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .container{
+        width: 100%;
+        max-width: 40rem;
+        border: 1px solid red;
+        
+    }
+}

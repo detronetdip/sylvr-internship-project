@@ -1,0 +1,68 @@
+.auth-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background-color:  #e8ecf8;
+    .container{
+        width: 100%;
+        max-width: 40rem;
+        padding: 1.5rem;
+        h2{
+          font-size: 3rem;
+          text-align: center;
+          padding-bottom: 2rem;
+          color: $secondary;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.9rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #a5a5a5;
+            .error{
+              color: crimson;
+              font-size: 1.3rem;
+            }
+            input{
+              outline: none;
+              border: none;
+              padding: 1.3rem;
+              font-size: 1.4rem;
+              border-radius: 8px;
+              background-color: #d2d7e2;
+              color: #333;
+            }
+            .fgt-pass{
+              display: flex;
+              justify-content: end;
+              span{
+                font-size: 1.3rem;
+                color: $primary;
+              }
+            }
+            button{
+              padding: 1.3rem;
+              border-radius: 8px;
+              outline: none;
+              border: none;
+              font-size: 1.4rem;
+              color: #fff;
+              background-color: $primary;
+              cursor: pointer;
+              transition: 0.5s;
+              &:active{
+                transform: scale(0.9);
+              }
+            }
+          }
+          h6{
+            padding-top: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: $primary;
+            cursor: pointer;
+          }
+    }
+}
