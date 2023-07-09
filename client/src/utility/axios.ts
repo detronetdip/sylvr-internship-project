@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -9,13 +10,30 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log(error);
     const { response, config } = error;
+    if (config.headers.itc > 2) {
+      localStorage.clear();
+      // window.location.href = "/auth";
+      return Promise.reject(error);
+    }
     if (
       response.data.error.statusCode === 401 &&
       response.data.error.code === 3000
     ) {
-      await axiosInstance.get(`${server}/refresh`);
+      config.headers.itc = +config.headers.itc + 1;
+      console.log(config);
+      const { data } = await axiosInstance.post(
+        `${server}/auth/refresh`,
+        {
+          refreshToken: localStorage.getItem("refreshToken"),
+        },
+        {
+          headers: {
+            itc: config.headers.itc,
+          },
+        }
+      );
+      localStorage.setItem("accessToken", data.data.accessToken);
       return axiosInstance(config);
     } else if (response.statusCode === 404 && response.error === 3001) {
       window.location.href = "/auth";
@@ -29,6 +47,7 @@ axiosInstance.interceptors.request.use(
   function (config) {
     const accessToken = localStorage.getItem("accessToken");
     config.headers.Authorization = `Bearer ${accessToken || ""}`;
+    config.headers.itc = +config.headers.itc + 1 || 1;
     return config;
   },
   function (error) {

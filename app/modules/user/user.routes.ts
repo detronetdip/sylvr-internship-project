@@ -24,7 +24,11 @@ route.patch(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const user = req.body;
-      const result = await userService.updateUserDetails(user);
+      const userId = res.locals.user.id;
+      const result = await userService.updateUserDetails({
+        ...user,
+        _id: userId,
+      });
       res.send(new ResponseHandler(result));
     } catch (error) {
       console.log(error);

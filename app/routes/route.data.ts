@@ -8,5 +8,6 @@ export const routes: Routes = [authRoutes, userRoutes];
 export const excludedPaths: ExcludedPaths = [
   new ExcludedPath("/auth/register", "POST"),
   new ExcludedPath("/auth/login", "POST"),
+  new ExcludedPath("/auth/refresh", "POST"),
   new ExcludedPath("/healthcheck", "GET"),
 ];
