@@ -5,15 +5,10 @@ services:
     build:
       context: ./client/
       dockerfile: Dockerfile
-    environment:
-      - PORT=3000
-      - MONGODB_URL=mongodb://mongodb/sylvr
-      - ACCESS_TOKEN_EXPIRY_TIME=1200
-      - REFRESH_TOKEN_EXPIRY_TIME=12000
     ports:
-      - 3000:3000
+      - 3001:3001
     depends_on:
-      - mongodb
+      - node-app
     networks:
       - mynetwork
   node-app:
@@ -24,8 +19,8 @@ services:
     environment:
       - PORT=3000
       - MONGODB_URL=mongodb://mongodb/sylvr
-      - ACCESS_TOKEN_EXPIRY_TIME=20
-      - REFRESH_TOKEN_EXPIRY_TIME=100
+      - ACCESS_TOKEN_EXPIRY_TIME=1200
+      - REFRESH_TOKEN_EXPIRY_TIME=12000
     ports:
       - 3000:3000
     depends_on:
