@@ -12,9 +12,6 @@ const update = (filter: FilterQuery<IUser>, updateQuery: UpdateQuery<IUser>) =>
 const updateUserDetails = (user: IUser) =>
   update({ _id: user._id }, { $set: user });
 
-const deleteUser = (userId: string) =>
-  update({ _id: userId }, { $set: { isDeleted: true } });
-
 const getUserDetails = async (userId: string) => {
   const user = await findOne({ _id: userId });
   if (!user) throw { statusCode: 404, msg: "User not found" };
