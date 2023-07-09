@@ -37,19 +37,5 @@ route.patch(
   }
 );
 
-route.delete(
-  "/:id",
-  PARAM_ID_VALIDATOR,
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const userId = req.params.id;
-      const result = await userService.deleteUser(userId);
-      res.send(new ResponseHandler(result));
-    } catch (error) {
-      console.log(error);
-      next(error);
-    }
-  }
-);
 
 export default new Route("/user", route);
