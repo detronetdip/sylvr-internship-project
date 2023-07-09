@@ -9,14 +9,30 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
+    console.log(error);
     const { response, config } = error;
-    if (response.status === 401 && response.data.code === 3000) {
+    if (
+      response.data.error.statusCode === 401 &&
+      response.data.error.code === 3000
+    ) {
       await axiosInstance.get(`${server}/refresh`);
       return axiosInstance(config);
-    } else if (response.status === 401 && response.data.code === 4001) {
+    } else if (response.statusCode === 404 && response.error === 3001) {
       window.location.href = "/auth";
       return Promise.reject(error);
     }
+    return Promise.reject(error);
+  }
+);
+
+axiosInstance.interceptors.request.use(
+  function (config) {
+    const accessToken = localStorage.getItem("accessToken");
+    config.headers.Authorization = `Bearer ${accessToken || ""}`;
+    return config;
+  },
+  function (error) {
+    // Do something with request error
     return Promise.reject(error);
   }
 );

@@ -1,11 +1,44 @@
-.home-container{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    .container{
-        width: 100%;
-        max-width: 40rem;
-        border: 1px solid red;
-        
+.home-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $primary-bg;
+  height: 100vh;
+  .container {
+    width: 100%;
+    max-width: 40rem;
+    padding: 1.5rem;
+    color: $secondary;
+    h1 {
+      font-size: 2rem;
+      font-weight: 200;
+      text-align: center;
     }
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    h3 {
+      text-align: center;
+      font-size: 2rem;
+    }
+    .btn-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1.3rem;
+      button {
+        font-size: 1.3rem;
+        padding: 0.8rem;
+        border-radius: 0.6rem;
+        margin: 0 0.5rem;
+        background-color: $primary;
+        color: $white;
+        outline: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
 }

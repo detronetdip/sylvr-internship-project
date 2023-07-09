@@ -18,7 +18,7 @@ export const authorize = (excludedPaths: ExcludedPaths) => {
       next();
     } catch (e) {
       console.log(e);
-      next({ message: "UNAUTHORIZED", statusCode: 401 });
+      next({ message: "UNAUTHORIZED", statusCode: 401,code: 3000});
     }
   };
 };

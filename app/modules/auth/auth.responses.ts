@@ -10,5 +10,6 @@ export const AUTH_RESPONSES = {
   INVALID_TOKEN: {
     statusCode: 404,
     message: "Invalid token",
+    code: 3001
   },
 };

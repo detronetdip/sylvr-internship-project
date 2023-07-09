@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100vh;
-    background-color:  #e8ecf8;
+    background-color:  $primary-bg;
     .container{
         width: 100%;
         max-width: 40rem;
@@ -20,7 +20,7 @@
             flex-direction: column;
             gap: 1.9rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid #a5a5a5;
+            border-bottom: 1px solid $border;
             .error{
               color: crimson;
               font-size: 1.3rem;

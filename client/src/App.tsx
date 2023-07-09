@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import AuthPage from "./pages/Auth";
 import Auth from "./components/Auth/Auth";
+import Update from "./pages/Update";
 
 function App() {
   return (
@@ -12,6 +13,14 @@ function App() {
           element={
             <Auth>
               <Home />
+            </Auth>
+          }
+        />
+        <Route
+          path="/update"
+          element={
+            <Auth>
+              <Update />
             </Auth>
           }
         />
