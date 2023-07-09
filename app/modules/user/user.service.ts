@@ -23,6 +23,5 @@ export default {
   createUser,
   findOne,
   updateUserDetails,
-  deleteUser,
   getUserDetails
 };
