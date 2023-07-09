@@ -7,6 +7,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userState } from "../../context/index";
 import axiosInstance from "../../utility/axios";
 import { useEffect, useState } from "react";
+import { server } from "../../utility/constant";
 
 function Auth({ children }: any) {
   const user = useRecoilValue(userState);
@@ -15,7 +16,7 @@ function Auth({ children }: any) {
   const [loading, setLoading] = useState(true);
   const fetchData = async () => {
     try {
-      const { data } = await axiosInstance.get("http://localhost:3000/user");
+      const { data } = await axiosInstance.get(`${server}/user`);
       setUser((old) => {
         return {
           ...old,

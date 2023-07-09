@@ -1,5 +1,21 @@
 version: '3'
 services:
+  react-app:
+    container_name: "frontend"
+    build:
+      context: ./client/
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+      - MONGODB_URL=mongodb://mongodb/sylvr
+      - ACCESS_TOKEN_EXPIRY_TIME=1200
+      - REFRESH_TOKEN_EXPIRY_TIME=12000
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    networks:
+      - mynetwork
   node-app:
     container_name: "backend"
     build:
